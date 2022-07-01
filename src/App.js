@@ -1,5 +1,11 @@
+import TestComponent from "components/TestComponent/TestComponent";
+
 const App = () => {
-  return <>{`Hello world!`}</>;
+  return (
+    <>
+      <TestComponent number={3}></TestComponent>
+    </>
+  );
 };
 
 export default App;
