@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 import BookList from "pages/BookList/BookList";
 import BookDetails from "pages/BookDetails/BookDetails";
-import NotFound from "pages/NotFound/NotFound";
+import { NotFound } from "pages/NotFound";
 import { ROUTES } from "constants/routes";
 
 const App = () => {
