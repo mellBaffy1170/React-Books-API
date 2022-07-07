@@ -15,7 +15,7 @@ const NotFound = ({ navigateToSearch }) => {
       <ErrorContentWrapper>
         <ErrorTitle>{"404 ERROR"}</ErrorTitle>
         <ErrorMessage>{"Page not found"}</ErrorMessage>
-        <BackButton handleClick={navigateToSearch}>Go to Search</BackButton>
+        <BackButton handleClick={navigateToSearch}>{"Go to Search"}</BackButton>
       </ErrorContentWrapper>
       <ImageContainer>
         <NotFoundImage />
