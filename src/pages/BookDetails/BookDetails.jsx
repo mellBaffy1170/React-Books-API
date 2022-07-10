@@ -1,7 +1,7 @@
 import {
   BookAuthorsContainer,
   BookCategoriesContainer,
-  BookDescriotionContainer,
+  BookDescriptionContainer,
   BookDetailsWrapper,
   BookImageContainer,
   BookInfoWrapper,
@@ -11,16 +11,20 @@ import {
 const BookDetails = () => {
   return (
     <BookDetailsWrapper>
-      <BookImageContainer></BookImageContainer>
+      <BookImageContainer
+        src={
+          "http://books.google.com/books/content?id=yzgzEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        }
+      />
       <BookInfoWrapper>
         <BookCategoriesContainer>{"Art"}</BookCategoriesContainer>
         <BookTitleContainer>{"Node.js"}</BookTitleContainer>
         <BookAuthorsContainer>{"Kirill Syhov"}</BookAuthorsContainer>
-        <BookDescriotionContainer>
+        <BookDescriptionContainer>
           {
             "About the Book Based on the bestselling first edition, Node.js in Action, Second Edition is a completely new book. Packed with practical examples, it teaches you how to create high-performance web servers using JavaScript and Node."
           }
-        </BookDescriotionContainer>
+        </BookDescriptionContainer>
       </BookInfoWrapper>
     </BookDetailsWrapper>
   );

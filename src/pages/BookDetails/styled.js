@@ -1,7 +1,5 @@
 import { styled } from "@mui/material";
 
-import layoutBackground from "assets/images/page-layout-background.jpg";
-
 export const BookDetailsWrapper = styled("div")({
   display: "flex",
   flexDirection: "row",
@@ -12,14 +10,10 @@ export const BookDetailsWrapper = styled("div")({
   background: "#f0f0f0", 
 });
 
-export const BookImageContainer = styled("div")({
-  height: "330px",
-  width: "250px",
-  background: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('${layoutBackground}')`,
-  backgroundSize: "cover",
-  backgroundPosition: "center",
+export const BookImageContainer = styled("img")({
+  maxHeight: "330px",
+  maxWidth: "250px",
   boxSizing: "border-box",
-  border: "1px solid #000",
 });
 
 export const BookInfoWrapper = styled("div")({
@@ -28,7 +22,6 @@ export const BookInfoWrapper = styled("div")({
   boxSizing: "border-box",
   paddingLeft: "50px",
   height: "auto",
-  width: "600px",
 });
 
 export const BookTitleContainer = styled("div")({
@@ -50,9 +43,9 @@ export const BookCategoriesContainer = styled("div")({
   textDecoration: "underline",
 });
 
-export const BookDescriotionContainer = styled("div")({
+export const BookDescriptionContainer = styled("div")({
   border: "1px solid #808080",
   margin: "10px 0",
   padding: "20px",
-  height: "160px",
+  minHeight: "160px",
 });
