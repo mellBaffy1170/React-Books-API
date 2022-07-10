@@ -11,7 +11,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route index element={<Navigate replace to={ROUTES.bookList} />} />
-        <Route element={<PageLayout />}>
+        <Route element={<PageLayout  />}>
           <Route path={ROUTES.bookList} element={<BookList />} />
           <Route path={ROUTES.bookDetails} element={<BookDetails />} />
         </Route>

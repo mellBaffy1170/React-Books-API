@@ -4,16 +4,18 @@ import { CATEGORIES } from "constants/categories";
 
 import { StyledSelector } from "./styled";
 
-const CategorySelect = () => {
-  const [defaultCategory] = CATEGORIES;
-
+const CategorySelect = ({ name, onChange, value }) => {
   return (
     <StyledSelector
       variant="standard"
-      defaultValue={defaultCategory}
+      name={name}
+      onChange={onChange}
+      value={value}
     >
-      {CATEGORIES.map((category) => (
-        <MenuItem value={category}>{category}</MenuItem>
+      {CATEGORIES.map((category, index) => (
+        <MenuItem value={category} key={index}>
+          {category}
+        </MenuItem>
       ))}
     </StyledSelector>
   );

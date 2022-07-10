@@ -1,7 +1,7 @@
 import SearchBar from "./SearchBar";
 
-const SearchBarContainer = () => {
-  return <SearchBar />;
+const SearchBarContainer = ({ ...rest }) => {
+  return <SearchBar {...rest} />;
 };
 
 export default SearchBarContainer;

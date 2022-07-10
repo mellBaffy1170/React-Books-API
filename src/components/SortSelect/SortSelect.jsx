@@ -4,13 +4,13 @@ import { SORT } from "constants/sort";
 
 import { StyledSelector } from "./styled";
 
-const SortSelect = () => {
-  const [defaultSort] = SORT;
-
+const SortSelect = ({ name, onChange, value }) => {
   return (
-    <StyledSelector variant="standard" defaultValue={defaultSort}>
-      {SORT.map((sort) => (
-        <MenuItem value={sort}>{sort}</MenuItem>
+    <StyledSelector variant="standard" name={name} onChange={onChange} value={value}>
+      {SORT.map((sort, index) => (
+        <MenuItem value={sort} key={index}>
+          {sort}
+        </MenuItem>
       ))}
     </StyledSelector>
   );

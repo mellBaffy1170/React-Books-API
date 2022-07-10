@@ -6,16 +6,31 @@ import { SortSelect } from "components/SortSelect/index";
 
 import { HeadTitle, HeadWrapper, SelectWrapper } from "./styled";
 
-const PageLayout = () => {
+const PageLayout = ({ formik }) => {
   return (
     <>
       <HeadWrapper>
         <HeadTitle>{"Book Search"}</HeadTitle>
-        <SearchBar />
-        <SelectWrapper>
-          <CategorySelect />
-          <SortSelect />
-        </SelectWrapper>
+        <form onSubmit={formik.handleSubmit}>
+          <SearchBar
+            name={"search"}
+            onChange={formik.handleChange}
+            value={formik.values.search}
+          />
+          <SelectWrapper>
+            <CategorySelect
+              name={"category"}
+              onChange={formik.handleChange}
+              value={formik.values.category}
+            />
+            <SortSelect
+              name={"sort"}
+              onChange={formik.handleChange}
+              value={formik.values.sort}
+            />
+          </SelectWrapper>
+          <button type="submit">Search</button>
+        </form>
       </HeadWrapper>
       <Outlet />
     </>
