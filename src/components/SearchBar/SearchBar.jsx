@@ -1,8 +1,13 @@
 import { SearchInput } from "./styled";
 
-const SearchBar = () => {
+const SearchBar = ({ name, onChange, value }) => {
   return (
-    <SearchInput variant="standard" />
+    <SearchInput
+      variant="standard"
+      name={name}
+      onChange={onChange}
+      value={value}
+    />
   );
 };
 
