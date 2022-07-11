@@ -41,7 +41,6 @@ const PageLayout = ({ formik, isFetching }) => {
             <SubmitButton
               variant="contained"
               type="submit"
-              disabled={isFetching}
             >
               {"Search"}
             </SubmitButton>

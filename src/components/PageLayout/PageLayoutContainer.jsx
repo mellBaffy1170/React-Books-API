@@ -1,8 +1,10 @@
 import { useFormik } from "formik";
-// import { useState } from "react";
+import { Snackbar, Alert } from "@mui/material";
+import { useState } from "react";
 
 import { CATEGORIES } from "constants/categories";
 import { SORT } from "constants/sort";
+import { AUTO_HIDE_DURATION } from "constants/common";
 import BooksListContext from "context/BooksListContext";
 import useGetBooks from "api/getBooks";
 
@@ -13,17 +15,25 @@ const PageLayoutContainer = () => {
   const [defaultSort] = SORT;
 
   // const [queryValues, setQueryValues] = useState({});
+  const [isSnackOpened, setIsSnackOpened] = useState(false);
+
   const {
     mutate: fetchBooks,
     data: books,
     isLoading: isFetchingBooks,
   } = useGetBooks();
 
+  const handleCloseError = () => setIsSnackOpened(false);
+
   const handleSubmit = (values) => {
-    fetchBooks({
-      ...values,
-      category: values.category !== defaultCategory ? values.category : null,
-    });
+    if (!values.search) {
+      setIsSnackOpened(true);
+    } else {
+      fetchBooks({
+        ...values,
+        category: values.category !== defaultCategory ? values.category : null,
+      });
+    }
   };
 
   const formik = useFormik({
@@ -37,7 +47,16 @@ const PageLayoutContainer = () => {
 
   return (
     <BooksListContext.Provider value={books}>
-      <PageLayout formik={formik} isFetching={isFetchingBooks}/>
+      <PageLayout formik={formik} isFetching={isFetchingBooks} />
+      <Snackbar
+        open={isSnackOpened}
+        onClose={handleCloseError}
+        autoHideDuration={AUTO_HIDE_DURATION}
+      >
+        <Alert severity="error" onClose={handleCloseError}>
+          {"Search should not be empty"}
+        </Alert>
+      </Snackbar>
     </BooksListContext.Provider>
   );
 };
