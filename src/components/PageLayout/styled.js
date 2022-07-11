@@ -1,4 +1,4 @@
-import { styled } from "@mui/material";
+import { styled, Button, CircularProgress } from "@mui/material";
 
 import layoutBackground from "assets/images/page-layout-background.jpg";
 
@@ -26,3 +26,7 @@ export const SelectWrapper = styled("div")({
   width: "512px",
   margin: "20px 0",
 });
+
+export const SubmitButton = styled(Button)({});
+
+export const ButtonLoader = styled(CircularProgress)({});

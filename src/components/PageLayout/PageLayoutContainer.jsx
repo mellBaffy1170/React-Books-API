@@ -13,7 +13,11 @@ const PageLayoutContainer = () => {
   const [defaultSort] = SORT;
 
   // const [queryValues, setQueryValues] = useState({});
-  const { mutate: fetchBooks, data: books } = useGetBooks();
+  const {
+    mutate: fetchBooks,
+    data: books,
+    isLoading: isFetchingBooks,
+  } = useGetBooks();
 
   const handleSubmit = (values) => {
     fetchBooks({
@@ -33,7 +37,7 @@ const PageLayoutContainer = () => {
 
   return (
     <BooksListContext.Provider value={books}>
-      <PageLayout formik={formik} />
+      <PageLayout formik={formik} isFetching={isFetchingBooks}/>
     </BooksListContext.Provider>
   );
 };
