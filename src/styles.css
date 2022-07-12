@@ -4,6 +4,10 @@
   font-family: "Noto Sans", sans-serif;
 }
 
+body {
+  overflow-y: scroll;
+}
+
 /* RESET CSS */
 html,
 body,
