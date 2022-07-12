@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { QueryClientProvider } from "react-query";
 
 import { PageLayout } from "components/PageLayout";
-import BookList from "pages/BookList/BookList";
+import { BookList } from "pages/BookList";
 import BookDetails from "pages/BookDetails/BookDetails";
 import { NotFound } from "pages/NotFound";
 import { ROUTES } from "constants/routes";

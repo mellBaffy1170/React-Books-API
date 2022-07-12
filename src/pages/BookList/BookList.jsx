@@ -1,14 +1,18 @@
-import { useContext } from "react";
+import { BookCard } from "components/BookCard";
 
-import BooksListContext from "context/BooksListContext";
+import { BookItemsWrapper, BookListTitle } from "./styled";
 
-const BookList = () => {
-  const books = useContext(BooksListContext);
+const BookList = ({ books, resultsFound }) => {
   return (
     <>
-      {"BookList"}
-      <br />
-      {JSON.stringify(books)}
+      {resultsFound !== undefined && (
+        <BookListTitle>{`Found ${resultsFound} results`}</BookListTitle>
+      )}
+      <BookItemsWrapper>
+        {books.map((bookData) => (
+          <BookCard {...bookData} key={bookData.id} />
+        ))}
+      </BookItemsWrapper>
     </>
   );
 };
