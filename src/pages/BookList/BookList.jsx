@@ -1,10 +1,10 @@
 import { BookCard } from "components/BookCard";
 
-import { BookItemsWrapper, BookListTitle } from "./styled";
+import { BookItemsWrapper, BookListContainer, BookListTitle, ButtonLoader, LoadMoreButton } from "./styled";
 
 const BookList = ({ books, resultsFound }) => {
   return (
-    <>
+    <BookListContainer>
       {resultsFound !== undefined && (
         <BookListTitle>{`Found ${resultsFound} results`}</BookListTitle>
       )}
@@ -13,7 +13,10 @@ const BookList = ({ books, resultsFound }) => {
           <BookCard {...bookData} key={bookData.id} />
         ))}
       </BookItemsWrapper>
-    </>
+      {/* <ButtonLoader> */}
+        <LoadMoreButton>{"Load more"}</LoadMoreButton>
+      {/* </ButtonLoader> */}
+    </BookListContainer>
   );
 };
 
