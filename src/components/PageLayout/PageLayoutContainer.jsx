@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import { Snackbar, Alert } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { CATEGORIES } from "constants/categories";
 import { SORT } from "constants/sort";
@@ -14,14 +14,22 @@ const PageLayoutContainer = () => {
   const [defaultCategory] = CATEGORIES;
   const [defaultSort] = SORT;
 
-  // const [queryValues, setQueryValues] = useState({});
+  const [queryValues, setQueryValues] = useState({});
   const [isSnackOpened, setIsSnackOpened] = useState(false);
 
   const {
-    mutate: fetchBooks,
     data: books,
-    isLoading: isFetchingBooks,
-  } = useGetBooks();
+    isFetching: isFetchingBooks,
+    refetch,
+    fetchNextPage: fetchMoreBooks,
+    hasNextPage: hasMoreBooks,
+  } = useGetBooks(queryValues);
+
+  useEffect(() => {
+    if (queryValues.search) {
+      refetch();
+    }
+  }, [queryValues, refetch]);
 
   const handleCloseError = () => setIsSnackOpened(false);
 
@@ -29,7 +37,7 @@ const PageLayoutContainer = () => {
     if (!values.search) {
       setIsSnackOpened(true);
     } else {
-      fetchBooks({
+      setQueryValues({
         ...values,
         category: values.category !== defaultCategory ? values.category : null,
       });
@@ -46,7 +54,9 @@ const PageLayoutContainer = () => {
   });
 
   return (
-    <BooksListContext.Provider value={books}>
+    <BooksListContext.Provider
+      value={{ ...books, fetchMore: fetchMoreBooks, hasMore: hasMoreBooks }}
+    >
       <PageLayout formik={formik} isFetching={isFetchingBooks} />
       <Snackbar
         open={isSnackOpened}
