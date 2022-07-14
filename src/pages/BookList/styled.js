@@ -3,6 +3,7 @@ import { styled, Button, CircularProgress } from "@mui/material";
 export const BookListContainer = styled("div")({
   backgroundColor: "#FAFAFA",
   margin: "0 120px",
+  paddingBottom: "30px",
 });
 
 export const WelcomeWrapper = styled("div")({
@@ -52,7 +53,10 @@ export const BookItemsWrapper = styled("div")({
 
 export const LoadMoreButton = styled(Button)({
   display: "block",
-  margin: "10px auto 30px",
+  margin: "10px auto 0",
 });
 
-export const ButtonLoader = styled(CircularProgress)({});
+export const ButtonLoader = styled(CircularProgress)({
+  margin: "0 auto",
+  display: "block",
+});

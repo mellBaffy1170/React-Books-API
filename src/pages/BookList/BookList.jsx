@@ -7,6 +7,7 @@ import {
   BookListContainer,
   BookListTitle,
   BooksNotFoundContainer,
+  ButtonLoader,
   LoadMoreButton,
   WelcomeImageContainer,
   WelcomeTextContainer,
@@ -14,7 +15,7 @@ import {
   WelcomeWrapper,
 } from "./styled";
 
-const BookList = ({ books, resultsFound, fetchMore, hasMore }) => {
+const BookList = ({ books, resultsFound, fetchMore, hasMore, isFetching }) => {
   return (
     <BookListContainer>
       {resultsFound !== undefined ? (
@@ -47,9 +48,13 @@ const BookList = ({ books, resultsFound, fetchMore, hasMore }) => {
         ))}
       </BookItemsWrapper>
       {books.length ? (
-        <LoadMoreButton onClick={fetchMore} disabled={!hasMore}>
-          {"Load more"}
-        </LoadMoreButton>
+        isFetching ? (
+          <ButtonLoader />
+        ) : (
+          <LoadMoreButton onClick={fetchMore} disabled={!hasMore}>
+            {"Load more"}
+          </LoadMoreButton>
+        )
       ) : null}
     </BookListContainer>
   );

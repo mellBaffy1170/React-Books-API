@@ -18,7 +18,7 @@ const PageLayoutContainer = () => {
   const [isSnackOpened, setIsSnackOpened] = useState(false);
 
   const {
-    data: books,
+    data: booksPages,
     isFetching: isFetchingBooks,
     refetch,
     fetchNextPage: fetchMoreBooks,
@@ -55,7 +55,12 @@ const PageLayoutContainer = () => {
 
   return (
     <BooksListContext.Provider
-      value={{ ...books, fetchMore: fetchMoreBooks, hasMore: hasMoreBooks }}
+      value={{
+        ...booksPages,
+        fetchMore: fetchMoreBooks,
+        hasMore: hasMoreBooks,
+        isFetching: isFetchingBooks,
+      }}
     >
       <PageLayout formik={formik} isFetching={isFetchingBooks} />
       <Snackbar

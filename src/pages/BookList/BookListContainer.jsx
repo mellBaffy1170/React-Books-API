@@ -9,7 +9,7 @@ const BookListContainer = () => {
   const [booksData, setBooksData] = useState([]);
   const [booksFound, setBooksFound] = useState(undefined);
 
-  const { fetchMore, hasMore } = booksPages;
+  const { fetchMore, hasMore, isFetching } = booksPages;
 
   useEffect(() => {
     const mapVolumeData = (item) => {
@@ -51,6 +51,7 @@ const BookListContainer = () => {
       resultsFound={booksFound}
       fetchMore={fetchMore}
       hasMore={hasMore}
+      isFetching={isFetching}
     />
   );
 };
