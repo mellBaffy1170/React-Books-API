@@ -5,10 +5,11 @@ import BooksListContext from "context/BooksListContext";
 import BookList from "./BookList";
 
 const BookListContainer = () => {
-  const books = useContext(BooksListContext);
+  const booksPages = useContext(BooksListContext);
   const [booksData, setBooksData] = useState([]);
+  const [booksFound, setBooksFound] = useState(undefined);
 
-  const { totalItems, items } = books || {};
+  const { fetchMore, hasMore, isFetching } = booksPages;
 
   useEffect(() => {
     const mapVolumeData = (item) => {
@@ -31,12 +32,28 @@ const BookListContainer = () => {
       return bookData;
     };
 
+    const items = booksPages?.pages?.reduce(
+      (total, page) => total.concat(page.items || []),
+      []
+    );
+
     const mappedData = items?.map(mapVolumeData) || [];
 
     setBooksData(mappedData);
-  }, [items]);
+    if (booksPages.pages) {
+      setBooksFound(booksPages.pages[0].totalItems);
+    }
+  }, [booksPages]);
 
-  return <BookList books={booksData} resultsFound={totalItems} />;
+  return (
+    <BookList
+      books={booksData}
+      resultsFound={booksFound}
+      fetchMore={fetchMore}
+      hasMore={hasMore}
+      isFetching={isFetching}
+    />
+  );
 };
 
 export default BookListContainer;
