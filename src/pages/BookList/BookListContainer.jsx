@@ -51,7 +51,7 @@ const BookListContainer = () => {
     if (booksPages.pages) {
       setBooksFound(booksPages.pages[0].totalItems);
     }
-  }, [booksPages]);
+  }, [booksPages, redirectTo]);
 
   return (
     <BookList
