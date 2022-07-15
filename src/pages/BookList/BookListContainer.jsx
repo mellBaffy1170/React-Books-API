@@ -1,6 +1,9 @@
 import { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import BooksListContext from "context/BooksListContext";
+import { ROUTES } from "constants/routes";
+import { transformRoute } from "utils/url/transformRoute";
 
 import BookList from "./BookList";
 
@@ -8,6 +11,8 @@ const BookListContainer = () => {
   const booksPages = useContext(BooksListContext);
   const [booksData, setBooksData] = useState([]);
   const [booksFound, setBooksFound] = useState(undefined);
+
+  const redirectTo = useNavigate();
 
   const { fetchMore, hasMore, isFetching } = booksPages;
 
@@ -21,12 +26,15 @@ const BookListContainer = () => {
 
       const { smallThumbnail: image } = imageLinks || {};
 
+      const goToDetails = () =>
+        redirectTo(transformRoute(ROUTES.bookDetails, id));
+
       const bookData = {
-        id,
         title,
         authors,
         category,
         image,
+        goToDetails,
       };
 
       return bookData;
@@ -43,7 +51,7 @@ const BookListContainer = () => {
     if (booksPages.pages) {
       setBooksFound(booksPages.pages[0].totalItems);
     }
-  }, [booksPages]);
+  }, [booksPages, redirectTo]);
 
   return (
     <BookList

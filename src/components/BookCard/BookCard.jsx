@@ -8,9 +8,9 @@ import {
   BookCardWrapper,
 } from "./styled";
 
-const BookCard = ({ title, category, authorsString, image }) => {
+const BookCard = ({ title, category, authorsString, image, goToDetails }) => {
   return (
-    <BookCardWrapper>
+    <BookCardWrapper onClick={goToDetails}>
       <BookCardImage src={image || imageNotFound} />
       <BookCardCategory>{category || ""}</BookCardCategory>
       <BookCardTitle>{title || ""}</BookCardTitle>

@@ -1,12 +1,14 @@
 import { useFormik } from "formik";
 import { Snackbar, Alert } from "@mui/material";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { CATEGORIES } from "constants/categories";
 import { SORT } from "constants/sort";
 import { AUTO_HIDE_DURATION } from "constants/common";
 import BooksListContext from "context/BooksListContext";
 import useGetBooks from "api/getBooks";
+import { ROUTES } from "constants/routes";
 
 import PageLayout from "./PageLayout";
 
@@ -14,6 +16,7 @@ const PageLayoutContainer = () => {
   const [defaultCategory] = CATEGORIES;
   const [defaultSort] = SORT;
 
+  const redirectTo = useNavigate();
   const [queryValues, setQueryValues] = useState({});
   const [isSnackOpened, setIsSnackOpened] = useState(false);
 
@@ -41,6 +44,7 @@ const PageLayoutContainer = () => {
         ...values,
         category: values.category !== defaultCategory ? values.category : null,
       });
+      redirectTo(ROUTES.bookList);
     }
   };
 

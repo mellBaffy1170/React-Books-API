@@ -3,7 +3,7 @@ import { QueryClientProvider } from "react-query";
 
 import { PageLayout } from "components/PageLayout";
 import { BookList } from "pages/BookList";
-import BookDetails from "pages/BookDetails/BookDetails";
+import { BookDetails} from "pages/BookDetails";
 import { NotFound } from "pages/NotFound";
 import { ROUTES } from "constants/routes";
 import { queryClient } from "api/queryClient";

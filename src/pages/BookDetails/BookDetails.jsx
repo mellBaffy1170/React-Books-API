@@ -1,3 +1,5 @@
+import imageNotFound from "assets/images/image-not-found.jpg";
+
 import {
   BookAuthorsContainer,
   BookCategoriesContainer,
@@ -6,25 +8,24 @@ import {
   BookImageContainer,
   BookInfoWrapper,
   BookTitleContainer,
+  CircularLoader,
 } from "./styled";
 
-const BookDetails = () => {
-  return (
+const BookDetails = ({ isBookLoading, book }) => {
+  const { title, description, image, authorsString, category } = book || {};
+
+  return isBookLoading ? (
+    <CircularLoader size="96px" />
+  ) : (
     <BookDetailsWrapper>
-      <BookImageContainer
-        src={
-          "http://books.google.com/books/content?id=yzgzEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-        }
-      />
+      <BookImageContainer src={image || imageNotFound} />
       <BookInfoWrapper>
-        <BookCategoriesContainer>{"Art"}</BookCategoriesContainer>
-        <BookTitleContainer>{"Node.js"}</BookTitleContainer>
-        <BookAuthorsContainer>{"Kirill Syhov"}</BookAuthorsContainer>
-        <BookDescriptionContainer>
-          {
-            "About the Book Based on the bestselling first edition, Node.js in Action, Second Edition is a completely new book. Packed with practical examples, it teaches you how to create high-performance web servers using JavaScript and Node."
-          }
-        </BookDescriptionContainer>
+        <BookCategoriesContainer>{category}</BookCategoriesContainer>
+        <BookTitleContainer>{title}</BookTitleContainer>
+        <BookAuthorsContainer>{authorsString}</BookAuthorsContainer>
+        <BookDescriptionContainer
+          dangerouslySetInnerHTML={{ __html: description || "NO DESCRIPTION" }}
+        />
       </BookInfoWrapper>
     </BookDetailsWrapper>
   );

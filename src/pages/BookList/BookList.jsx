@@ -43,9 +43,9 @@ const BookList = ({ books, resultsFound, fetchMore, hasMore, isFetching }) => {
         </WelcomeWrapper>
       )}
       <BookItemsWrapper>
-        {books.map((bookData, index) => (
-          <BookCard {...bookData} key={index} />
-        ))}
+        {books.map((bookData, index) => {
+          return <BookCard {...bookData} key={index} />;
+        })}
       </BookItemsWrapper>
       {books.length ? (
         isFetching ? (
