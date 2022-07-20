@@ -22,7 +22,7 @@ const useGetBooks = (filters) => {
   return useInfiniteQuery([QUERY_KEYS.books, filters], fetchBooksPage, {
     enabled: false,
     getNextPageParam: (lastPage) =>
-      !(lastPage.items?.length < PAGE_SIZE) ? lastPage.page + 1 : undefined,
+      !(lastPage.items?.length < PAGE_SIZE) ? lastPage.page + 1 : undefined, // параметр следующей страницы, hasmore
   });
 };
 

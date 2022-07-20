@@ -1,9 +1,9 @@
-import { useEffect } from "react";
-import useGetBookById from "api/getBookById";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+import useGetBookById from "api/getBookById";
+
 import BookDetails from "./BookDetails";
-import { useState } from "react";
 
 const BookDetailsContainer = () => {
   const [bookToDisplay, setBookToDisplay] = useState(undefined);
