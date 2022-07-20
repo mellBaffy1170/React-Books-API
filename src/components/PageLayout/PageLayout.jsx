@@ -51,7 +51,6 @@ const PageLayout = ({ formik, isFetching }) => {
     </PageLayoutWrapper>
   );
 };
-// refactor { }
 
 export default PageLayout;
 

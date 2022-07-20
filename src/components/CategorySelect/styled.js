@@ -1,5 +1,7 @@
 import { styled, Select } from "@mui/material";
 
+import theme from "themeSettings";
+
 export const StyledSelector = styled(Select)({
   "& .MuiInputBase-input": {
     width: "104px",
@@ -8,6 +10,15 @@ export const StyledSelector = styled(Select)({
     fontSize: "20px",
     fontFamily: '"Noto Sans", sans-serif',
     fontWeight: "200",
+    [theme.breakpoints.down("md")]: {
+      width: "96px",
+      fontSize: "16px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "72px",
+      fontSize: "12px",
+    },
+    //
   },
   "& .MuiSelect-icon": {
     color: "white",
